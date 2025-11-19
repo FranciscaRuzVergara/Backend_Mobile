@@ -11,7 +11,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Carrito {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(nullable = false, unique = true)
     private Integer subtotal;

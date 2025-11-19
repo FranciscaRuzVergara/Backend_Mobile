@@ -13,7 +13,15 @@ public class securityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // Usuarios
                         .requestMatchers("/api/usuarios/register").permitAll()
+                        // Carrito
+                        .requestMatchers("/api/carrito/**").permitAll()
+                        // Pedidos
+                        .requestMatchers("/api/pedidos/**").permitAll()
+                        // Producto
+                        .requestMatchers("/api/producto/**").permitAll()
+                        // El resto requiere autenticación
                         .anyRequest().authenticated()
                 );
         return http.build();
