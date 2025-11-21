@@ -1,5 +1,7 @@
 package com.nieve.backend.model;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,5 +21,8 @@ public class Producto {
 
     @Column(nullable = false)
     private String nombreProducto;
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Carrito> carritos;
 
 }

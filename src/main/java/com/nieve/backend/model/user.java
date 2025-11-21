@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,5 +31,8 @@ public class user {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Pedido> pedidos;
 
 }
