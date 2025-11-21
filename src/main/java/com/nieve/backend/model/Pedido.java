@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.Set;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 @Entity
 @Data
@@ -28,7 +27,7 @@ public class Pedido {
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_pedido_user")
     )
-    private User user;
+    private user user;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Carrito> carritos;
