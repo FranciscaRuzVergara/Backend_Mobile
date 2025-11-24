@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CarritoId implements Serializable {
     
-    @Column(name="nroPedido")
+    @Column(name="nro_pedido")
     private Long nroPedido;
 
-    @Column(name="idProducto")
+    @Column(name="id_producto")
     private Long idProducto;
     
 }

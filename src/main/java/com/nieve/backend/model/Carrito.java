@@ -28,10 +28,8 @@ public class Carrito {
     @JsonBackReference
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinColumn(
-            name = "nroPedido",
+            name = "nro_pedido",
             nullable = false,
-            insertable = false,
-            updatable = false,
             foreignKey = @ForeignKey(name = "fk_carrito_pedido")
     )
     private Pedido pedido;
@@ -41,10 +39,8 @@ public class Carrito {
     @MapsId("idProducto")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinColumn(
-            name = "idProducto",
+            name = "id_producto",
             nullable = false,
-            insertable = false,
-            updatable = false,
             foreignKey = @ForeignKey(name = "fk_carrito_producto")
     )
     private Producto producto;
