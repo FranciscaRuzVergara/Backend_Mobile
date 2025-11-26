@@ -1,5 +1,6 @@
 package com.nieve.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,10 +10,11 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class user {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,6 +35,9 @@ public class user {
     private Date fechaRegistro;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore // 👈 evita que al serializar un User se devuelvan todos sus pedidos
     private Set<Pedido> pedidos;
-
 }
+
+
+
