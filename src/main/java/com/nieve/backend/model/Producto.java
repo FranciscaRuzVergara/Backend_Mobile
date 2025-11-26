@@ -22,6 +22,15 @@ public class Producto {
     @Column(nullable = false)
     private String nombreProducto;
 
+    @Column(nullable = true)
+    private String descripcion;
+
+    @Column(nullable = true)
+    private String imagen;
+
+    @Column(nullable = true)
+    private String categoria;
+
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Carrito> carritos;
 
