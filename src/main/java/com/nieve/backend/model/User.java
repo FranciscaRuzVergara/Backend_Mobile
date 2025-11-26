@@ -35,7 +35,7 @@ public class User {
     private Date fechaRegistro;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore // 👈 evita que al serializar un User se devuelvan todos sus pedidos
+    @JsonIgnore
     private Set<Pedido> pedidos;
 }
 
