@@ -65,7 +65,9 @@ public class DataLoader implements CommandLineRunner {
                     null,
                     "fran@nieve.cl",
                     encoder.encode("holis123"),
-                    "Cliente",
+                    "Francisca Paz",
+                    "Ruz Vergara",
+                    "Admin",
                     "12345678-9",
                     new Date(),
                     null
@@ -75,7 +77,9 @@ public class DataLoader implements CommandLineRunner {
                     null,
                     "felipe@nieve.cl",
                     encoder.encode("holis123"),
-                    "Cliente",
+                    "Felipe Ignacio",
+                    "Moreau Rios",
+                    "Admin",
                     "98765432-1",
                     new Date(),
                     null

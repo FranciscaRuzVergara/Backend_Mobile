@@ -17,7 +17,7 @@ public class UserService {
     }
 
     // Crear usuario
-    public User crearUsuario(String correo, String password, String rol, String rut) {
+    public User crearUsuario(String correo, String password,String nombres, String apellidos, String rol, String rut) {
         User u = new User();
         u.setCorreo(correo);
         u.setPasswordHash(password);
@@ -36,11 +36,18 @@ public class UserService {
     public Optional<User> findById(Long id) {
         return repo.findById(id);
     }
+    // buscar usuarios por correo
+    public User findByCorreo(String correo) {
+        return repo.findByCorreo(correo);
+    }
+
 
     // Actualizar usuario
     public Optional<User> update(Long id, User user) {
         return repo.findById(id).map(existing -> {
             existing.setCorreo(user.getCorreo());
+            existing.setNombres(user.getNombres());
+            existing.setApellidos(user.getApellidos());
             existing.setRol(user.getRol());
             existing.setRut(user.getRut());
             existing.setPasswordHash(user.getPasswordHash());

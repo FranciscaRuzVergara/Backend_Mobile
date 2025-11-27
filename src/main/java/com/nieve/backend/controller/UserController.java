@@ -1,6 +1,7 @@
 package com.nieve.backend.controller;
 
 import com.nieve.backend.model.User;
+import com.nieve.backend.repository.UserRepository;
 import com.nieve.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,8 @@ public class UserController {
         User u = service.crearUsuario(
                 user.getCorreo(),
                 user.getPasswordHash(),
+                user.getNombres(),
+                user.getApellidos(),
                 user.getRol(),
                 user.getRut()
         );
@@ -46,6 +49,15 @@ public class UserController {
         Optional<User> usuario = service.findById(id);
         return usuario.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    //Buscar por correo
+    @GetMapping("/correo/{correo}")
+    public ResponseEntity<User> buscarPorCorreo(@PathVariable String correo) {
+        User u = service.findByCorreo(correo);
+        if (u == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(u);
     }
 
     // Actualizar usuario

@@ -26,6 +26,12 @@ public class User {
     private String passwordHash;
 
     @Column(nullable = false)
+    private String nombres;
+
+    @Column(nullable = false)
+    private String apellidos;
+
+    @Column(nullable = false)
     private String rol;
 
     @Column
