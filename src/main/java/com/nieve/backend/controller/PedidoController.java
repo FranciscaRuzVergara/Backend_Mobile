@@ -45,6 +45,8 @@ public class PedidoController {
         try {
             //Falta completar
             Pedido pe = pedidoService.findById(id);
+            pe.setNroPedido(id);
+            pe.setFechaPedido(pedido.getFechaPedido());
             pedidoService.save(pe);
             return ResponseEntity.ok(pedido);
         } catch (Exception e) {

@@ -23,7 +23,7 @@ public class Pedido {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPedido;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "id",
             nullable = false,

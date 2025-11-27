@@ -16,11 +16,11 @@ public class ProductoController {
     private  ProductoService productoService;
     @GetMapping
     public ResponseEntity<List<Producto>> listar() {
-        List<Producto> tipoCursos = productoService.findAll();
-        if (tipoCursos.isEmpty()) {
+        List<Producto> productos = productoService.findAll();
+        if (productos.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(tipoCursos);
+        return ResponseEntity.ok(productos);
     }
 
     @GetMapping("/{id}")
@@ -39,16 +39,22 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevoProducto);
         }
 
-        @PutMapping("/{id}")
-        public ResponseEntity<Producto> actualizar(@PathVariable Long id, @RequestBody Producto producto) {
-            try {
-                Producto pro = productoService.findById(id);
-                productoService.save(producto);
-                return ResponseEntity.ok(producto);
-            } catch (Exception e) {
-                return ResponseEntity.notFound().build();
-            }
+    @PutMapping("/{id}")
+    public ResponseEntity<Producto> actualizar(@PathVariable Long id, @RequestBody Producto producto) {
+        try {
+            Producto pro = productoService.findById(id);
+            pro.setIdProducto(id);
+            pro.setNombreProducto(producto.getNombreProducto());
+            pro.setDescripcion(producto.getDescripcion());
+            pro.setPrecio(producto.getPrecio());
+            pro.setImagen(producto.getImagen());
+            pro.setCategoria(producto.getCategoria());
+            Producto actualizo = productoService.save(pro);
+            return ResponseEntity.ok(actualizo);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
         }
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Long id) {
