@@ -84,6 +84,18 @@ public class DataLoader implements CommandLineRunner {
                     new Date(),
                     null
             ));
+
+            userRepo.save(new User(
+                    null,
+                    "pepito@gmail.com",
+                    encoder.encode("holis123"),
+                    "Pepito Rodrigo",
+                    "Perez Gamer",
+                    "Cliente",
+                    "99765443-2",
+                    new Date(),
+                    null
+            ));
         }
     }
 }
